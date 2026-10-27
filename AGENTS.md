@@ -16,6 +16,9 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - /spec usaremos esta habilidad para crear las especificaciones.
 - /spec-impl usaremos esta skill para hacer las implementaciones.
 
+## Reglas de código
+- Usar código limpio, nombres, funciones, variables, etc. en inglés.
+
 ## Commands
 - Dev/build/start/lint: `npm run dev`, `npm run build`, `npm run start`, `npm run lint`.
 - Typecheck: `npx tsc --noEmit`. No test script or test runner is configured.
