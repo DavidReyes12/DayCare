@@ -47,6 +47,7 @@ input:focus {
 }
 
 .kid {
+  border: 1px solid #ece0d0;
   transition: 0.15s;
 }
 

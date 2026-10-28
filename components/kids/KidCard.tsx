@@ -39,7 +39,6 @@ export default function KidCard({
         gap: 14,
         minWidth: 0,
         background: "#FFFDF9",
-        border: "1px solid #ECE0D0",
         borderRadius: 18,
         padding: 16,
         boxShadow: "0 4px 14px -12px rgba(120,90,60,.5)",
