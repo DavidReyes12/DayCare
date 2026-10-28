@@ -109,12 +109,12 @@ Los 8 niños hardcodeados en `app/kids/page.tsx` (id en slug, usado por `generat
 
 ## Acceptance criteria
 
-- [ ] La ruta `/kids` renderiza el sidebar (con "Niños" activo) y el listado de 8 niños en 2 columnas idéntico a `references/pantallas/ninos.dc.html` y `references/screenshots/ninos2.png`.
-- [ ] Las tarjetas `.kid` tienen el efecto hover (`border-color: #F2A78E; transform: translateY(-2px); transition: .15s`) y enlazan a `/kids/[id]`.
-- [ ] La ruta `/kids/[id]` (p. ej. `/kids/mateo-fernandez`) renderiza el perfil del niño idéntico a `references/pantallas/perfil-nino.dc.html`.
-- [ ] El enlace "Volver a Niños" en `/kids/[id]` navega a `/kids`, y el `Sidebar` permite navegar entre `/` (Feed) y `/kids` (Niños).
-- [ ] Todos los componentes nuevos existen bajo `components/kids/` y usan identificadores, tipos y props en inglés.
-- [ ] `npm run build`, `npx tsc --noEmit` y `npx eslint app` pasan sin errores.
+- [x] La ruta `/kids` renderiza el sidebar (con "Niños" activo) y el listado de 8 niños en 2 columnas idéntico a `references/pantallas/ninos.dc.html` y `references/screenshots/ninos2.png`.
+- [x] Las tarjetas `.kid` tienen el efecto hover (`border-color: #F2A78E; transform: translateY(-2px); transition: .15s`) y enlazan a `/kids/[id]`.
+- [x] La ruta `/kids/[id]` (p. ej. `/kids/mateo-fernandez`) renderiza el perfil del niño idéntico a `references/pantallas/perfil-nino.dc.html`.
+- [x] El enlace "Volver a Niños" en `/kids/[id]` navega a `/kids`, y el `Sidebar` permite navegar entre `/` (Feed) y `/kids` (Niños).
+- [x] Todos los componentes nuevos existen bajo `components/kids/` y usan identificadores, tipos y props en inglés.
+- [x] `npm run build`, `npx tsc --noEmit` y `npx eslint app` pasan sin errores.
 
 ## Decisions
 
