@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type ComposerProps = {
   avatarLetter: string;
   createHref: string;
@@ -8,7 +10,7 @@ export default function Composer({
   createHref,
 }: ComposerProps) {
   return (
-    <a
+    <Link
       href={createHref}
       style={{
         display: "flex",
@@ -69,6 +71,6 @@ export default function Composer({
           <circle cx="12" cy="13" r="4" />
         </svg>
       </span>
-    </a>
+    </Link>
   );
 }

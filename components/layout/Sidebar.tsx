@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type NavItemKey = "feed" | "kids" | "notices" | "account";
 
 type NavItem = {
@@ -51,7 +53,7 @@ const NAV_ITEMS: NavItem[] = [
   {
     key: "notices",
     label: "Avisos",
-    href: "avisos.dc.html",
+    href: "/avisos",
     icon: (
       <svg
         width="19"
@@ -70,7 +72,7 @@ const NAV_ITEMS: NavItem[] = [
   {
     key: "account",
     label: "Mi cuenta",
-    href: "mi-cuenta.dc.html",
+    href: "/mi-cuenta",
     icon: (
       <svg
         width="19"
@@ -122,8 +124,8 @@ export default function Sidebar({
         height: "100vh",
       }}
     >
-      <a
-        href="index.dc.html"
+      <Link
+        href="/"
         style={{
           display: "flex",
           alignItems: "center",
@@ -173,10 +175,10 @@ export default function Sidebar({
             {roomName}
           </div>
         </div>
-      </a>
+      </Link>
 
-      <a
-        href="crear-publicacion.dc.html"
+      <Link
+        href="/crear-publicacion"
         style={{
           display: "flex",
           alignItems: "center",
@@ -206,7 +208,7 @@ export default function Sidebar({
           <path d="M12 5v14M5 12h14" />
         </svg>
         Nueva publicación
-      </a>
+      </Link>
 
       <nav
         style={{
@@ -219,7 +221,7 @@ export default function Sidebar({
         {NAV_ITEMS.map((item) => {
           const isActive = item.key === activeItem;
           return (
-            <a
+            <Link
               key={item.key}
               href={item.href}
               style={{
@@ -236,7 +238,7 @@ export default function Sidebar({
             >
               {item.icon}
               {item.label}
-            </a>
+            </Link>
           );
         })}
       </nav>
@@ -280,7 +282,7 @@ export default function Sidebar({
             </div>
             <div style={{ fontSize: 12, color: "#A89A8B" }}>{user.role}</div>
           </div>
-          <a
+          <Link
             href={user.logoutHref}
             title="Cerrar sesión"
             style={{
@@ -307,7 +309,7 @@ export default function Sidebar({
             >
               <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </aside>

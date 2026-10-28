@@ -42,7 +42,7 @@ const posts: Post[] = [
     audience: "familia de Mateo",
     text: "Pintamos con témperas esta mañana. Mateo eligió el azul para todo y se concentró un montón mezclando colores.",
     photo: {
-      href: "foto.dc.html",
+      href: "/foto",
       label: "Foto · pintando con témperas",
     },
     likes: 5,
@@ -81,7 +81,7 @@ export default function FeedPage() {
         background: "#F6ECDF",
       }}
     >
-      <Sidebar roomName="Sala Soles" user={{ ...currentUser, logoutHref: "login.dc.html" }} />
+      <Sidebar roomName="Sala Soles" user={{ ...currentUser, logoutHref: "/login" }} />
 
       <main
         style={{
@@ -107,7 +107,7 @@ export default function FeedPage() {
 
           <Composer
             avatarLetter={currentUser.avatarLetter}
-            createHref="crear-publicacion.dc.html"
+            createHref="/crear-publicacion"
           />
 
           <SectionDivider label="PUBLICADO HOY" />
@@ -151,8 +151,8 @@ export default function FeedPage() {
                   text={post.text}
                   photoHref={post.photo?.href}
                   photoLabel={post.photo?.label}
-                  detailHref="detalle-publicacion.dc.html"
-                  editHref="crear-publicacion.dc.html"
+                  detailHref="/detalle-publicacion"
+                  editHref="/crear-publicacion"
                   likes={post.likes}
                   comments={post.comments}
                 />

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import Badge, { PostType } from "@/components/ui/Badge";
 import PostActions from "@/components/feed/PostActions";
 
@@ -107,7 +109,7 @@ export default function PostCard({
       </p>
 
       {photoHref && photoLabel && (
-        <a
+        <Link
           href={photoHref}
           style={{
             display: "flex",
@@ -138,7 +140,7 @@ export default function PostCard({
             <path d="m21 15-3.6-3.6a2 2 0 0 0-2.8 0L6 21" />
           </svg>
           <span style={{ fontSize: 13.5 }}>{photoLabel}</span>
-        </a>
+        </Link>
       )}
 
       <PostActions

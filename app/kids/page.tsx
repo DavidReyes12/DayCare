@@ -102,7 +102,7 @@ export default function KidsPage() {
     >
       <Sidebar
         roomName="Sala Soles"
-        user={{ ...currentUser, logoutHref: "login.dc.html" }}
+        user={{ ...currentUser, logoutHref: "/login" }}
         activeItem="kids"
       />
 
@@ -122,7 +122,7 @@ export default function KidsPage() {
             padding: "34px 40px 80px",
           }}
         >
-          <KidsHeader addHref="agregar-nino.dc.html" />
+          <KidsHeader addHref="/agregar-nino" />
 
           <KidsSearchBar />
 

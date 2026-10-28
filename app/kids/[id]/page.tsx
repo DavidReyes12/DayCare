@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import Link from "next/link";
 
 import KidAllergyAlert from "@/components/kids/KidAllergyAlert";
@@ -130,13 +132,57 @@ export function generateStaticParams() {
   return KIDS.map((kid) => ({ id: kid.id }));
 }
 
-export default async function KidProfilePage({
-  params,
-}: PageProps<"/kids/[id]">) {
+type KidProfilePageProps = Pick<PageProps<"/kids/[id]">, "params">;
+
+function KidProfileSkeleton() {
+  return (
+    <div style={{ display: "flex", flex: 1, minWidth: 300, gap: 18, flexDirection: "column" }}>
+      {[124, 64, 132].map((height) => (
+        <div
+          key={height}
+          style={{
+            height,
+            borderRadius: 18,
+            background: "rgba(63, 54, 46, 0.06)",
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+async function KidProfileDetails({ params }: KidProfilePageProps) {
   const { id } = await params;
   const kid = KIDS_BY_ID.get(id) ?? FALLBACK_KID;
   const age = kid.meta.split(" · ")[0];
 
+  return (
+    <div
+      style={{
+        flex: 1,
+        minWidth: 300,
+        display: "flex",
+        flexDirection: "column",
+        gap: 18,
+      }}
+    >
+      <KidProfileHeader
+        name={kid.name}
+        subtitle={`${age} · ${FALLBACK_ROOM}`}
+        avatarLetter={kid.avatarLetter}
+        avatarBg={kid.avatarBg}
+        avatarColor={kid.avatarColor}
+        editHref="/agregar-nino"
+      />
+
+      <KidAllergyAlert note={ALLERGY_NOTE} />
+
+      <KidInfoCard rows={INFO_ROWS} />
+    </div>
+  );
+}
+
+export default function KidProfilePage({ params }: KidProfilePageProps) {
   return (
     <div
       style={{
@@ -147,7 +193,7 @@ export default async function KidProfilePage({
     >
       <Sidebar
         roomName="Sala Soles"
-        user={{ ...currentUser, logoutHref: "login.dc.html" }}
+        user={{ ...currentUser, logoutHref: "/login" }}
         activeItem="kids"
       />
 
@@ -202,33 +248,14 @@ export default async function KidProfilePage({
               flexWrap: "wrap",
             }}
           >
-            <div
-              style={{
-                flex: 1,
-                minWidth: 300,
-                display: "flex",
-                flexDirection: "column",
-                gap: 18,
-              }}
-            >
-              <KidProfileHeader
-                name={kid.name}
-                subtitle={`${age} · ${FALLBACK_ROOM}`}
-                avatarLetter={kid.avatarLetter}
-                avatarBg={kid.avatarBg}
-                avatarColor={kid.avatarColor}
-                editHref="agregar-nino.dc.html"
-              />
-
-              <KidAllergyAlert note={ALLERGY_NOTE} />
-
-              <KidInfoCard rows={INFO_ROWS} />
-            </div>
+            <Suspense fallback={<KidProfileSkeleton />}>
+              <KidProfileDetails params={params} />
+            </Suspense>
 
             <LinkedParentsCard
               parents={LINKED_PARENTS}
-              summaryHref="resumen-dia.dc.html"
-              linkHref="vincular-padre.dc.html"
+              summaryHref="/resumen-dia"
+              linkHref="/vincular-padre"
             />
           </div>
         </div>

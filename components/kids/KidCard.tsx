@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export type KidBadgeVariant = "allergy" | "action";
 
 export type KidCardBadge = {
@@ -30,9 +32,9 @@ export default function KidCard({
   badge,
 }: KidCardProps) {
   return (
-    <a
-      className="kid"
+    <Link
       href={`/kids/${id}`}
+      className="kid"
       style={{
         display: "flex",
         alignItems: "center",
@@ -104,6 +106,6 @@ export default function KidCard({
           <path d="m9 18 6-6-6-6" />
         </svg>
       )}
-    </a>
+    </Link>
   );
 }

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type KidProfileHeaderProps = {
   name: string;
   subtitle: string;
@@ -51,7 +53,7 @@ export default function KidProfileHeader({
           {subtitle}
         </p>
       </div>
-      <a
+      <Link
         href={editHref}
         style={{
           border: "1.5px solid #ECE0D0",
@@ -64,7 +66,7 @@ export default function KidProfileHeader({
         }}
       >
         Editar
-      </a>
+      </Link>
     </div>
   );
 }

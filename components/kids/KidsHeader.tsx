@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type KidsHeaderProps = {
   addHref: string;
 };
@@ -37,7 +39,7 @@ export default function KidsHeader({ addHref }: KidsHeaderProps) {
           Niños
         </h1>
       </div>
-      <a
+      <Link
         href={addHref}
         style={{
           display: "flex",
@@ -65,7 +67,7 @@ export default function KidsHeader({ addHref }: KidsHeaderProps) {
           <path d="M12 5v14M5 12h14" />
         </svg>
         Agregar niño
-      </a>
+      </Link>
     </div>
   );
 }

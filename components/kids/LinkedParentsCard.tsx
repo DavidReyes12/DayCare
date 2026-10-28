@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export type ParentStatus = "ACTIVA" | "PENDIENTE";
 
 export type LinkedParent = {
@@ -29,7 +31,7 @@ export default function LinkedParentsCard({
 }: LinkedParentsCardProps) {
   return (
     <div style={{ width: 300, flex: "none", display: "flex", flexDirection: "column", gap: 14 }}>
-      <a
+      <Link
         href={summaryHref}
         style={{
           display: "flex",
@@ -59,7 +61,7 @@ export default function LinkedParentsCard({
           <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
         </svg>
         Resumen del día
-      </a>
+      </Link>
 
       <div
         style={{
@@ -134,7 +136,7 @@ export default function LinkedParentsCard({
             </div>
           ))}
 
-          <a
+          <Link
             href={linkHref}
             style={{
               display: "flex",
@@ -172,7 +174,7 @@ export default function LinkedParentsCard({
             <span style={{ fontWeight: 800, fontSize: 14.5, color: "#C5503A" }}>
               Vincular otro padre
             </span>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
