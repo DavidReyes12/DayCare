@@ -1,6 +1,6 @@
 # SPEC 02 — Listado de Niños (`/kids`) y Perfil de Niño (`/kids/[id]`)
 
-> **Status:** Approved
+> **Status:** Implemented
 > **Depends on:** specs/01-feed-home.md
 > **Date:** 2026-10-28
 > **Objective:** Implementar las pantallas de referencia `references/pantallas/ninos.dc.html` en la ruta `/kids` y `references/pantallas/perfil-nino.dc.html` en la ruta `/kids/[id]`, únicamente a nivel de interfaz y componentes estructurados en inglés, conectando la navegación entre `/`, `/kids` y `/kids/[id]`.
