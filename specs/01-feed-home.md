@@ -1,6 +1,6 @@
 # SPEC 01 — Feed como home `/`
 
-> **Status:** Approved
+> **Status:** Implemented
 > **Depends on:** none
 > **Date:** 2026-10-27
 > **Objective:** Implementar la plantilla `references/pantallas/feed.dc.html` como la página home `/` del proyecto, sin autenticación ni base de datos, replicando su estilo de forma idéntica, organizando la UI en componentes estructurados por carpetas.
@@ -72,15 +72,15 @@ type PostCardProps = {
 
 ## Acceptance criteria
 
-- [ ] La home `/` renderiza el sidebar + feed idéntico al mockup `feed.dc.html`.
-- [ ] Existen componentes estructurados en `components/layout`, `components/feed` y `components/ui`.
-- [ ] `app/page.tsx` compone la página usando esos componentes (no contiene todo el markup inline).
-- [ ] Las fuentes Fredoka y Nunito se cargan y se aplican como en el mockup.
-- [ ] El fondo es `#F6ECDF`, el sidebar `#FFFDF9` y las tarjetas `#FFFDF9` con bordes `#ECE0D0`.
-- [ ] El scrollbar personalizado se muestra.
-- [ ] No hay errores de consola en dev ni en build.
-- [ ] `npm run build` y `npx tsc --noEmit` pasan sin errores.
-- [ ] `npx eslint app` no reporta errores nuevos.
+- [x] La home `/` renderiza el sidebar + feed idéntico al mockup `feed.dc.html`.
+- [x] Existen componentes estructurados en `components/layout`, `components/feed` y `components/ui`.
+- [x] `app/page.tsx` compone la página usando esos componentes (no contiene todo el markup inline).
+- [x] Las fuentes Fredoka y Nunito se cargan y se aplican como en el mockup.
+- [x] El fondo es `#F6ECDF`, el sidebar `#FFFDF9` y las tarjetas `#FFFDF9` con bordes `#ECE0D0`.
+- [x] El scrollbar personalizado se muestra.
+- [x] No hay errores de consola en dev ni en build.
+- [x] `npm run build` y `npx tsc --noEmit` pasan sin errores.
+- [x] `npx eslint app` no reporta errores nuevos.
 
 ## Decisions
 

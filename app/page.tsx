@@ -151,6 +151,8 @@ export default function FeedPage() {
                   text={post.text}
                   photoHref={post.photo?.href}
                   photoLabel={post.photo?.label}
+                  detailHref="detalle-publicacion.dc.html"
+                  editHref="crear-publicacion.dc.html"
                   likes={post.likes}
                   comments={post.comments}
                 />

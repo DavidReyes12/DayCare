@@ -8,7 +8,7 @@ type NavItem = {
 const NAV_ITEMS: NavItem[] = [
   {
     label: "Feed",
-    href: "/",
+    href: "feed.dc.html",
     active: true,
     icon: (
       <svg
@@ -113,7 +113,7 @@ export default function Sidebar({ roomName, user }: SidebarProps) {
       }}
     >
       <a
-        href="/"
+        href="index.dc.html"
         style={{
           display: "flex",
           alignItems: "center",

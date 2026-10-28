@@ -14,6 +14,8 @@ export type PostCardProps = {
   text: string;
   photoHref?: string;
   photoLabel?: string;
+  detailHref?: string;
+  editHref?: string;
   likes: number;
   comments: number;
 };
@@ -31,6 +33,8 @@ export default function PostCard({
   text,
   photoHref,
   photoLabel,
+  detailHref,
+  editHref,
   likes,
   comments,
 }: PostCardProps) {
@@ -59,9 +63,9 @@ export default function PostCard({
             borderRadius: "50%",
             background: avatarBg,
             color: avatarColor,
-            fontFamily: "Fredoka",
-            fontWeight: 600,
-            fontSize: 17,
+            ...(avatarLetter
+              ? { fontFamily: "Fredoka", fontWeight: 600, fontSize: 17 }
+              : undefined),
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -137,7 +141,12 @@ export default function PostCard({
         </a>
       )}
 
-      <PostActions likes={likes} comments={comments} />
+      <PostActions
+        likes={likes}
+        comments={comments}
+        detailHref={detailHref}
+        editHref={editHref}
+      />
     </div>
   );
 }
