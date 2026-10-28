@@ -1,15 +1,17 @@
+type NavItemKey = "feed" | "kids" | "notices" | "account";
+
 type NavItem = {
+  key: NavItemKey;
   label: string;
   href: string;
   icon: React.ReactNode;
-  active?: boolean;
 };
 
 const NAV_ITEMS: NavItem[] = [
   {
+    key: "feed",
     label: "Feed",
-    href: "feed.dc.html",
-    active: true,
+    href: "/",
     icon: (
       <svg
         width="19"
@@ -26,8 +28,9 @@ const NAV_ITEMS: NavItem[] = [
     ),
   },
   {
+    key: "kids",
     label: "Niños",
-    href: "ninos.dc.html",
+    href: "/kids",
     icon: (
       <svg
         width="19"
@@ -46,6 +49,7 @@ const NAV_ITEMS: NavItem[] = [
     ),
   },
   {
+    key: "notices",
     label: "Avisos",
     href: "avisos.dc.html",
     icon: (
@@ -64,6 +68,7 @@ const NAV_ITEMS: NavItem[] = [
     ),
   },
   {
+    key: "account",
     label: "Mi cuenta",
     href: "mi-cuenta.dc.html",
     icon: (
@@ -94,9 +99,14 @@ type SidebarUser = {
 type SidebarProps = {
   roomName: string;
   user: SidebarUser;
+  activeItem?: NavItemKey;
 };
 
-export default function Sidebar({ roomName, user }: SidebarProps) {
+export default function Sidebar({
+  roomName,
+  user,
+  activeItem = "feed",
+}: SidebarProps) {
   return (
     <aside
       style={{
@@ -206,26 +216,29 @@ export default function Sidebar({ roomName, user }: SidebarProps) {
           flex: 1,
         }}
       >
-        {NAV_ITEMS.map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-              padding: "11px 12px",
-              borderRadius: 12,
-              background: item.active ? "#FBE3D8" : "transparent",
-              color: item.active ? "#D9583C" : "#6E6359",
-              fontWeight: item.active ? 800 : 600,
-              fontSize: 14.5,
-            }}
-          >
-            {item.icon}
-            {item.label}
-          </a>
-        ))}
+        {NAV_ITEMS.map((item) => {
+          const isActive = item.key === activeItem;
+          return (
+            <a
+              key={item.key}
+              href={item.href}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+                padding: "11px 12px",
+                borderRadius: 12,
+                background: isActive ? "#FBE3D8" : "transparent",
+                color: isActive ? "#D9583C" : "#6E6359",
+                fontWeight: isActive ? 800 : 600,
+                fontSize: 14.5,
+              }}
+            >
+              {item.icon}
+              {item.label}
+            </a>
+          );
+        })}
       </nav>
 
       <div
