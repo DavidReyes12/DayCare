@@ -122,7 +122,7 @@ export default function KidsPage() {
             padding: "34px 40px 80px",
           }}
         >
-          <KidsHeader addHref="/agregar-nino" />
+          <KidsHeader />
 
           <KidsSearchBar />
 

@@ -1,10 +1,6 @@
-import Link from "next/link";
+import AddKidModal from "@/components/kids/AddKidModal";
 
-type KidsHeaderProps = {
-  addHref: string;
-};
-
-export default function KidsHeader({ addHref }: KidsHeaderProps) {
+export default function KidsHeader() {
   return (
     <div
       style={{
@@ -39,35 +35,7 @@ export default function KidsHeader({ addHref }: KidsHeaderProps) {
           Niños
         </h1>
       </div>
-      <Link
-        href={addHref}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
-          padding: "11px 18px",
-          borderRadius: 14,
-          background: "linear-gradient(180deg,#F4977E,#EE8164)",
-          color: "#fff",
-          fontWeight: 800,
-          fontSize: 14.5,
-          boxShadow: "0 8px 18px -8px rgba(238,129,100,.7)",
-        }}
-      >
-        <svg
-          width="17"
-          height="17"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#fff"
-          strokeWidth="2.4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M12 5v14M5 12h14" />
-        </svg>
-        Agregar niño
-      </Link>
+      <AddKidModal />
     </div>
   );
 }

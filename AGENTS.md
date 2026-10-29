@@ -14,7 +14,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Spec Driven Development - Skills
 - /spec usaremos esta habilidad para crear las especificaciones.
-- /spec-impl usaremos esta skill para hacer las implementaciones.
+- /spec-impl usaremos esta skill para hacer las implementaciones, recuerda ir paso por paso.
 
 ## Reglas de código
 - Usar código limpio, nombres, funciones, variables, etc. en inglés.
