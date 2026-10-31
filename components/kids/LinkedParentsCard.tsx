@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LinkParentModal from "./LinkParentModal";
 
 export type ParentStatus = "ACTIVA" | "PENDIENTE";
 
@@ -13,7 +14,7 @@ export type LinkedParent = {
 type LinkedParentsCardProps = {
   parents: LinkedParent[];
   summaryHref: string;
-  linkHref: string;
+  kidName: string;
 };
 
 const STATUS_BADGE_STYLES: Record<
@@ -27,7 +28,7 @@ const STATUS_BADGE_STYLES: Record<
 export default function LinkedParentsCard({
   parents,
   summaryHref,
-  linkHref,
+  kidName,
 }: LinkedParentsCardProps) {
   return (
     <div style={{ width: 300, flex: "none", display: "flex", flexDirection: "column", gap: 14 }}>
@@ -136,45 +137,7 @@ export default function LinkedParentsCard({
             </div>
           ))}
 
-          <Link
-            href={linkHref}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-              padding: "8px 0 0",
-            }}
-          >
-            <span
-              style={{
-                width: 40,
-                height: 40,
-                borderRadius: "50%",
-                border: "1.5px dashed #D8CBBA",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#B0A290",
-                flex: "none",
-              }}
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M12 5v14M5 12h14" />
-              </svg>
-            </span>
-            <span style={{ fontWeight: 800, fontSize: 14.5, color: "#C5503A" }}>
-              Vincular otro padre
-            </span>
-          </Link>
+          <LinkParentModal kidName={kidName} />
         </div>
       </div>
     </div>
