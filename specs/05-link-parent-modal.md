@@ -1,6 +1,6 @@
 # SPEC 05 — Modal "Vincular padre" en `/kids/[id]`
 
-> **Status:** Approved
+> **Status:** Implemented
 > **Depends on:** specs/02-kids-and-profile.md, specs/04-add-kid-modal.md
 > **Date:** 2026-10-31
 > **Objective:** Convertir el enlace "Vincular otro padre" de `LinkedParentsCard` en un modal client-side que reproduce el diseño de `references/pantallas/vincular-padre.dc.html`, abierto desde la tarjeta de padres vinculados en el perfil del niño (`/kids/[id]`), con los campos nombre, email y parentesco obligatorios y sin persistencia.
@@ -91,18 +91,18 @@ La prop `kidName` se recibe desde el componente padre y se usa únicamente para 
 
 ## Acceptance criteria
 
-- [ ] En `/kids/[id]`, el botón "Vincular otro padre" abre un modal (overlay) sin navegar a otra ruta.
-- [ ] El modal reproduce el diseño de `references/pantallas/vincular-padre.dc.html` (encabezado con "Vincular padre" + "a {kidName}", aviso azul, campos, pills, código de invitación y botón de envío).
-- [ ] Los campos NOMBRE DEL PADRE/MADRE y EMAIL están marcados con asterisco y tienen atributo `required`; el email usa `type="email"`.
-- [ ] Las pills de parentesco son 3 opciones single-select (Mamá, Papá, Tutor/a) con "Mamá" seleccionado por defecto.
-- [ ] El bloque de código de invitación muestra "7K4P9" y "VENCE EN 7 DÍAS" como texto decorativo estático.
-- [ ] El botón "Enviar invitación" está deshabilitado hasta completar los 3 campos requeridos.
-- [ ] El botón de cerrar (X), click en el fondo atenuado y `Escape` cierran el modal.
-- [ ] "Enviar invitación" (con campos válidos) cierra el modal y resetea el formulario.
-- [ ] Existe `components/kids/LinkParentModal.tsx` como Client Component.
-- [ ] `LinkedParentsCard` ya no recibe `linkHref` y recibe `kidName` en su lugar.
-- [ ] `app/kids/[id]/page.tsx` pasa `kidName={kid.name}` a `LinkedParentsCard`.
-- [ ] `npm run build`, `npx tsc --noEmit` y `npx eslint app` pasan sin errores.
+- [x] En `/kids/[id]`, el botón "Vincular otro padre" abre un modal (overlay) sin navegar a otra ruta.
+- [x] El modal reproduce el diseño de `references/pantallas/vincular-padre.dc.html` (encabezado con "Vincular padre" + "a {kidName}", aviso azul, campos, pills, código de invitación y botón de envío).
+- [x] Los campos NOMBRE DEL PADRE/MADRE y EMAIL están marcados con asterisco y tienen atributo `required`; el email usa `type="email"`.
+- [x] Las pills de parentesco son 3 opciones single-select (Mamá, Papá, Tutor/a) con "Mamá" seleccionado por defecto.
+- [x] El bloque de código de invitación muestra "7K4P9" y "VENCE EN 7 DÍAS" como texto decorativo estático.
+- [x] El botón "Enviar invitación" está deshabilitado hasta completar los 3 campos requeridos.
+- [x] El botón de cerrar (X), click en el fondo atenuado y `Escape` cierran el modal.
+- [x] "Enviar invitación" (con campos válidos) cierra el modal y resetea el formulario.
+- [x] Existe `components/kids/LinkParentModal.tsx` como Client Component.
+- [x] `LinkedParentsCard` ya no recibe `linkHref` y recibe `kidName` en su lugar.
+- [x] `app/kids/[id]/page.tsx` pasa `kidName={kid.name}` a `LinkedParentsCard`.
+- [x] `npm run build`, `npx tsc --noEmit` y `npx eslint app` pasan sin errores.
 
 ## Decisions
 
