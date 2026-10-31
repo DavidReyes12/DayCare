@@ -66,8 +66,7 @@ export default function LinkParentModal({ kidName }: LinkParentModalProps) {
 
   const canSubmit =
     form.parentName.trim() !== "" &&
-    form.email.trim() !== "" &&
-    form.relation !== "";
+    form.email.trim() !== "";
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

@@ -81,7 +81,7 @@ async function KidProfile({ params }: { params: Promise<{ id: string }> }) {
           <KidAllergyAlert note={ALLERGY_NOTE} />
           <KidInfoCard rows={INFO_ROWS} />
         </div>
-        <LinkedParentsCard parents={LINKED_PARENTS} summaryHref="/resumen-dia" linkHref="/vincular-padre" />
+        <LinkedParentsCard parents={LINKED_PARENTS} summaryHref="/resumen-dia" kidName={kid.name} />
       </div>
     </div>
   );
