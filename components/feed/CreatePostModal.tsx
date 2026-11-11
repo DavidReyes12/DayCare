@@ -29,6 +29,21 @@ const INITIAL_FORM: CreatePostFormState = {
   photos: [],
 };
 
+const AUDIENCE_KIDS: { name: string; bg: string; color: string }[] = [
+  { name: "Mateo", bg: "#A9D9E8", color: "#1F7A93" },
+  { name: "Sofía", bg: "#F4B8CC", color: "#C44A7A" },
+  { name: "Benjamín", bg: "#B9DEC4", color: "#3E8B62" },
+];
+
+const labelStyle: React.CSSProperties = {
+  fontSize: 12,
+  fontWeight: 800,
+  letterSpacing: ".7px",
+  color: "#94887B",
+  marginBottom: 10,
+  display: "block",
+};
+
 export default function CreatePostModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [form, setForm] = useState<CreatePostFormState>(INITIAL_FORM);
@@ -48,6 +63,41 @@ export default function CreatePostModal() {
       close();
     }
   };
+
+  const toggleKid = (kid: string) => {
+    setForm((prev) => {
+      const isSelected = prev.selectedKids.includes(kid);
+      return {
+        ...prev,
+        selectedKids: isSelected
+          ? prev.selectedKids.filter((selected) => selected !== kid)
+          : [...prev.selectedKids, kid],
+        wholeRoom: false,
+      };
+    });
+  };
+
+  const selectWholeRoom = () => {
+    setForm((prev) => ({
+      ...prev,
+      selectedKids: [],
+      wholeRoom: true,
+    }));
+  };
+
+  const getAudienceChipStyle = (selected: boolean): React.CSSProperties => ({
+    display: "flex",
+    alignItems: "center",
+    gap: 8,
+    padding: "6px 14px 6px 6px",
+    borderRadius: 999,
+    border: selected ? "1.5px solid #3F362E" : "1.5px solid #ECE0D0",
+    background: selected ? "#3F362E" : "#FFFDF9",
+    color: selected ? "#fff" : "#6E6359",
+    fontWeight: 700,
+    fontSize: 14,
+    cursor: "pointer",
+  });
 
   return (
     <>
@@ -162,6 +212,59 @@ export default function CreatePostModal() {
                 >
                   Publicar
                 </button>
+              </div>
+
+              <div style={{ padding: "24px 26px" }}>
+                <label style={labelStyle}>PARA</label>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: 9,
+                    marginBottom: 22,
+                  }}
+                >
+                  {AUDIENCE_KIDS.map((kid) => {
+                    const selected = form.selectedKids.includes(kid.name);
+                    return (
+                      <button
+                        key={kid.name}
+                        type="button"
+                        onClick={() => toggleKid(kid.name)}
+                        style={getAudienceChipStyle(selected)}
+                      >
+                        <span
+                          style={{
+                            width: 26,
+                            height: 26,
+                            borderRadius: "50%",
+                            background: kid.bg,
+                            color: kid.color,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            fontFamily: "Fredoka",
+                            fontWeight: 600,
+                            fontSize: 13,
+                          }}
+                        >
+                          {kid.name.charAt(0)}
+                        </span>
+                        {kid.name}
+                      </button>
+                    );
+                  })}
+                  <button
+                    type="button"
+                    onClick={selectWholeRoom}
+                    style={{
+                      ...getAudienceChipStyle(form.wholeRoom),
+                      padding: "6px 16px",
+                    }}
+                  >
+                    Toda la sala
+                  </button>
+                </div>
               </div>
             </form>
           </div>
