@@ -35,6 +35,16 @@ const AUDIENCE_KIDS: { name: string; bg: string; color: string }[] = [
   { name: "Benjamín", bg: "#B9DEC4", color: "#3E8B62" },
 ];
 
+const CATEGORIES: { name: PostCategory; bg: string; color: string }[] = [
+  { name: "Comida", bg: "#9A7B1E", color: "#fff" },
+  { name: "Siesta", bg: "#E7DCF6", color: "#7B5FC0" },
+  { name: "Actividad", bg: "#2E89A6", color: "#fff" },
+  { name: "Logro", bg: "#CFEBD8", color: "#3E9B6C" },
+  { name: "Ánimo", bg: "#F9D2DE", color: "#C56486" },
+  { name: "Foto", bg: "#FBD8CC", color: "#D9684A" },
+  { name: "Anuncio", bg: "#CCD8F4", color: "#4E72C8" },
+];
+
 const labelStyle: React.CSSProperties = {
   fontSize: 12,
   fontWeight: 800,
@@ -264,6 +274,47 @@ export default function CreatePostModal() {
                   >
                     Toda la sala
                   </button>
+                </div>
+
+                <label style={labelStyle}>TIPO</label>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: 9,
+                    marginBottom: 22,
+                  }}
+                >
+                  {CATEGORIES.map((category) => {
+                    const selected = form.category === category.name;
+                    return (
+                      <button
+                        key={category.name}
+                        type="button"
+                        onClick={() =>
+                          setForm((prev) => ({
+                            ...prev,
+                            category: category.name,
+                          }))
+                        }
+                        style={{
+                          padding: "8px 16px",
+                          borderRadius: 999,
+                          border: selected
+                            ? "1.5px solid #3F362E"
+                            : "1.5px solid transparent",
+                          background: category.bg,
+                          color: category.color,
+                          fontWeight: 800,
+                          fontSize: 13.5,
+                          cursor: "pointer",
+                          opacity: selected ? 1 : 0.55,
+                        }}
+                      >
+                        {category.name}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </form>
