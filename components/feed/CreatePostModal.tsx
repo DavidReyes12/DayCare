@@ -316,6 +316,32 @@ export default function CreatePostModal() {
                     );
                   })}
                 </div>
+
+                <label style={labelStyle}>DESCRIPCIÓN</label>
+                <textarea
+                  value={form.description}
+                  onChange={(event) =>
+                    setForm((prev) => ({
+                      ...prev,
+                      description: event.target.value,
+                    }))
+                  }
+                  placeholder="Contá cómo le fue hoy…"
+                  style={{
+                    width: "100%",
+                    minHeight: 120,
+                    resize: "vertical",
+                    padding: "14px 16px",
+                    borderRadius: 14,
+                    border: "1.5px solid #EADFD0",
+                    background: "#fff",
+                    fontSize: 15,
+                    color: "#3F362E",
+                    lineHeight: 1.5,
+                    marginBottom: 22,
+                    fontFamily: "inherit",
+                  }}
+                />
               </div>
             </form>
           </div>
