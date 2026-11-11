@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 type PostCategory =
   | "Comida"
@@ -57,6 +57,7 @@ const labelStyle: React.CSSProperties = {
 export default function CreatePostModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [form, setForm] = useState<CreatePostFormState>(INITIAL_FORM);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const close = () => {
     setIsOpen(false);
@@ -93,6 +94,20 @@ export default function CreatePostModal() {
       selectedKids: [],
       wholeRoom: true,
     }));
+  };
+
+  const handleFiles = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (!files) return;
+    const previews = Array.from(files).map((file) => ({
+      name: file.name,
+      url: URL.createObjectURL(file),
+    }));
+    setForm((prev) => ({
+      ...prev,
+      photos: [...prev.photos, ...previews],
+    }));
+    event.target.value = "";
   };
 
   const getAudienceChipStyle = (selected: boolean): React.CSSProperties => ({
@@ -342,6 +357,71 @@ export default function CreatePostModal() {
                     fontFamily: "inherit",
                   }}
                 />
+
+                <label style={labelStyle}>FOTOS</label>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: 12,
+                  }}
+                >
+                  {form.photos.map((photo) => (
+                    <div
+                      key={photo.url}
+                      role="img"
+                      aria-label={photo.name}
+                      style={{
+                        width: 96,
+                        height: 96,
+                        borderRadius: 14,
+                        backgroundImage: `url(${photo.url})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                      }}
+                    />
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    style={{
+                      width: 96,
+                      height: 96,
+                      borderRadius: 14,
+                      border: "1.5px dashed #DBCDBA",
+                      background: "#F4ECE1",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: 6,
+                      color: "#B0A290",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#C5503A"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M12 5v14M5 12h14" />
+                    </svg>
+                    <span style={{ fontSize: 12 }}>Agregar</span>
+                  </button>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleFiles}
+                    style={{ display: "none" }}
+                  />
+                </div>
               </div>
             </form>
           </div>
