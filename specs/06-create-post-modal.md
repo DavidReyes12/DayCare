@@ -1,6 +1,6 @@
 # SPEC 06 — Modal "Nueva publicación" en `/`
 
-> **Status:** Approved
+> **Status:** Implemented
 > **Depends on:** specs/01-feed-home.md
 > **Date:** 2026-11-11
 > **Objective:** Convertir el botón "Nueva publicación" del `Sidebar` en un modal client-side que reproduce el diseño de `references/pantallas/crear-publicacion.dc.html` (audiencia multi-select, tipo single-select, descripción y fotos con preview local), con "Publicar" deshabilitado hasta tener descripción y tipo, sin persistencia.

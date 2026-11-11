@@ -123,7 +123,7 @@ export default function CreatePostModal() {
     event.target.value = "";
   };
 
-  const canPublish = form.description.trim() !== "" && form.category !== "";
+  const canPublish = form.description.trim() !== "";
 
   const getAudienceChipStyle = (selected: boolean): React.CSSProperties => ({
     display: "flex",
@@ -186,10 +186,9 @@ export default function CreatePostModal() {
             background: "rgba(63,54,46,.45)",
             zIndex: 50,
             display: "flex",
-            alignItems: "flex-start",
+            alignItems: "center",
             justifyContent: "center",
-            padding: "40px 24px",
-            overflow: "auto",
+            padding: 24,
           }}
         >
           <div
