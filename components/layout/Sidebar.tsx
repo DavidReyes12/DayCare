@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CreatePostModal from "@/components/feed/CreatePostModal";
 
 type NavItemKey = "feed" | "kids" | "notices" | "account";
 
@@ -177,38 +178,7 @@ export default function Sidebar({
         </div>
       </Link>
 
-      <Link
-        href="/crear-publicacion"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 8,
-          width: "100%",
-          padding: 12,
-          borderRadius: 14,
-          background: "linear-gradient(180deg,#F4977E,#EE8164)",
-          color: "#fff",
-          fontWeight: 800,
-          fontSize: 14.5,
-          boxShadow: "0 8px 18px -8px rgba(238,129,100,.75)",
-          marginBottom: 18,
-        }}
-      >
-        <svg
-          width="17"
-          height="17"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#fff"
-          strokeWidth="2.4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M12 5v14M5 12h14" />
-        </svg>
-        Nueva publicación
-      </Link>
+      <CreatePostModal />
 
       <nav
         style={{
