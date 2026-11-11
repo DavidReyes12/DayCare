@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type PostCategory =
   | "Comida"
@@ -60,9 +60,22 @@ export default function CreatePostModal() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const close = () => {
+    form.photos.forEach((photo) => URL.revokeObjectURL(photo.url));
     setIsOpen(false);
     setForm(INITIAL_FORM);
   };
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        close();
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, form]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -109,6 +122,8 @@ export default function CreatePostModal() {
     }));
     event.target.value = "";
   };
+
+  const canPublish = form.description.trim() !== "" && form.category !== "";
 
   const getAudienceChipStyle = (selected: boolean): React.CSSProperties => ({
     display: "flex",
@@ -225,14 +240,16 @@ export default function CreatePostModal() {
                 </span>
                 <button
                   type="submit"
+                  disabled={!canPublish}
                   style={{
                     color: "#D9583C",
                     fontWeight: 800,
                     fontSize: 15,
                     background: "none",
                     border: "none",
-                    cursor: "pointer",
+                    cursor: canPublish ? "pointer" : "not-allowed",
                     padding: 0,
+                    opacity: canPublish ? 1 : 0.5,
                   }}
                 >
                   Publicar
