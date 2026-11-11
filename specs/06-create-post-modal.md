@@ -104,18 +104,18 @@ No se modifican los datos hardcodeados de `app/page.tsx` ni el tipo `PostType` d
 
 ## Acceptance criteria
 
-- [ ] En `/`, el botón "Nueva publicación" del Sidebar abre un modal (overlay) sin navegar a otra ruta.
-- [ ] El modal reproduce el diseño de `references/pantallas/crear-publicacion.dc.html` (tarjeta 580px `#FBF4EC`, encabezado Cancelar / "Nueva publicación" / Publicar, secciones PARA, TIPO, DESCRIPCIÓN, FOTOS).
-- [ ] En PARA, "Toda la sala" viene seleccionado por defecto; se pueden seleccionar varios niños a la vez; elegir un niño deselecciona "Toda la sala" y viceversa.
-- [ ] En TIPO, exactamente 1 de las 7 pills aparece seleccionada (default "Comida") y cambiar de pill actualiza el marcado visual (borde `#3F362E` en la activa, opacidad reducida en el resto).
-- [ ] El textarea muestra placeholder "Contá cómo le fue hoy…" y está vacío al abrir el modal.
-- [ ] Click en el tile "Agregar" abre el selector de archivos del sistema (acepta solo `image/*`) y cada imagen elegida aparece como miniatura 96×96 en FOTOS.
-- [ ] El botón "Publicar" está deshabilitado hasta escribir una descripción no vacía (con tipo siempre seleccionado por default).
-- [ ] "Publicar" (con campos válidos) cierra el modal y resetea el formulario (descripción vacía, "Toda la sala", "Comida", sin fotos).
-- [ ] "Cancelar", click en el fondo atenuado y `Escape` cierran el modal y resetean el formulario.
-- [ ] Las URLs de preview se revocan (`URL.revokeObjectURL`) al cerrar o publicar.
-- [ ] Existe `components/feed/CreatePostModal.tsx` como Client Component y `Sidebar.tsx` ya no enlaza a `/crear-publicacion` desde el botón.
-- [ ] `npm run build`, `npx tsc --noEmit` y `npx eslint app` pasan sin errores.
+- [x] En `/`, el botón "Nueva publicación" del Sidebar abre un modal (overlay) sin navegar a otra ruta.
+- [x] El modal reproduce el diseño de `references/pantallas/crear-publicacion.dc.html` (tarjeta 580px `#FBF4EC`, encabezado Cancelar / "Nueva publicación" / Publicar, secciones PARA, TIPO, DESCRIPCIÓN, FOTOS).
+- [x] En PARA, "Toda la sala" viene seleccionado por defecto; se pueden seleccionar varios niños a la vez; elegir un niño deselecciona "Toda la sala" y viceversa.
+- [x] En TIPO, exactamente 1 de las 7 pills aparece seleccionada (default "Comida") y cambiar de pill actualiza el marcado visual (borde `#3F362E` en la activa, opacidad reducida en el resto).
+- [x] El textarea muestra placeholder "Contá cómo le fue hoy…" y está vacío al abrir el modal.
+- [x] Click en el tile "Agregar" abre el selector de archivos del sistema (acepta solo `image/*`) y cada imagen elegida aparece como miniatura 96×96 en FOTOS.
+- [x] El botón "Publicar" está deshabilitado hasta escribir una descripción no vacía (con tipo siempre seleccionado por default).
+- [x] "Publicar" (con campos válidos) cierra el modal y resetea el formulario (descripción vacía, "Toda la sala", "Comida", sin fotos).
+- [x] "Cancelar", click en el fondo atenuado y `Escape` cierran el modal y resetean el formulario.
+- [x] Las URLs de preview se revocan (`URL.revokeObjectURL`) al cerrar o publicar.
+- [x] Existe `components/feed/CreatePostModal.tsx` como Client Component y `Sidebar.tsx` ya no enlaza a `/crear-publicacion` desde el botón.
+- [x] `npm run build`, `npx tsc --noEmit` y `npx eslint app` pasan sin errores.
 
 ## Decisions
 
