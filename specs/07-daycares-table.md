@@ -1,6 +1,6 @@
 # SPEC 07 — Tabla `daycares` (primera migración Supabase)
 
-> **Status:** Approved
+> **Status:** Implemented
 > **Depends on:** none (schema objetivo: `../07-DB-Schema/opendaycare-database-schema.md`, tabla 1)
 > **Date:** 2026-11-14
 > **Objective:** Crear la tabla raíz `daycares` en el proyecto Supabase `ructjmvrvoxvcnwqhvte` usando el patrón de migraciones versionadas: el SQL vive commiteado en `supabase/migrations/` del repo (fuente de verdad) y se aplica al proyecto remoto con `apply_migration` del MCP de Supabase. Incluye `ENABLE ROW LEVEL SECURITY` sin policies (deny-all hasta la spec de auth) y un seed de 4 guarderías donde la importante es "Guardería Sala Soles".
@@ -128,14 +128,14 @@ Rollback: el patrón del proyecto es una migración adelante que revierte (como 
 
 ## Acceptance criteria
 
-- [ ] `supabase/migrations/<version>_create_daycares.sql` existe en el repo y está commiteado.
-- [ ] `list_migrations` remoto incluye la migración `create_daycares` con la misma versión que el nombre del archivo local.
-- [ ] `public.daycares` tiene exactamente 3 columnas: `id` (uuid, PK, default `gen_random_uuid()`), `name` (text, NOT NULL), `created_at` (timestamptz, NOT NULL, default `now()`); sin columnas extra.
-- [ ] RLS está habilitado en `daycares` y `pg_policies` no tiene policies para la tabla.
-- [ ] `select count(*) from public.daycares` = 4 y existe la fila con `name = 'Guardería Sala Soles'`.
-- [ ] `GET $SUPABASE_URL/rest/v1/daycares` con la anon key devuelve `[]` (deny por RLS).
-- [ ] `AGENTS.md` refleja el nuevo estado (existe `supabase/migrations/` con la migración de `daycares` aplicada).
-- [ ] `npm run build` y `npx tsc --noEmit` siguen pasando (no se toca código de la app, pero se confirma).
+- [x] `supabase/migrations/<version>_create_daycares.sql` existe en el repo y está commiteado.
+- [x] `list_migrations` remoto incluye la migración `create_daycares` con la misma versión que el nombre del archivo local.
+- [x] `public.daycares` tiene exactamente 3 columnas: `id` (uuid, PK, default `gen_random_uuid()`), `name` (text, NOT NULL), `created_at` (timestamptz, NOT NULL, default `now()`); sin columnas extra.
+- [x] RLS está habilitado en `daycares` y `pg_policies` no tiene policies para la tabla.
+- [x] `select count(*) from public.daycares` = 4 y existe la fila con `name = 'Guardería Sala Soles'`.
+- [x] `GET $SUPABASE_URL/rest/v1/daycares` con la anon key devuelve `[]` (deny por RLS).
+- [x] `AGENTS.md` refleja el nuevo estado (existe `supabase/migrations/` con la migración de `daycares` aplicada).
+- [x] `npm run build` y `npx tsc --noEmit` siguen pasando (no se toca código de la app, pero se confirma).
 
 ## Decisions
 
