@@ -11,10 +11,22 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## MCPs
 - Playwright Screenshots y cualquier cosa relacionada a playwright tienen que estar en la carpeta .playwright-mcp.
 - Context7 usaremos este MCP para traer la documentación actualizada del framework.
+- Supabase MCP está habilitado en la config global (`~/.config/opencode/opencode.jsonc`), tipo remote, project ref `ructjmvrvoxvcnwqhvte` y features `docs,account,database,debugging,development,functions,branching,feedback,notebooks`. Usarlo para inspeccionar schema, correr SQL, leer logs, gestionar edge functions/migraciones y generar tipos TypeScript.
 
 ## Spec Driven Development - Skills
 - /spec usaremos esta habilidad para crear las especificaciones.
 - /spec-impl usaremos esta skill para hacer las implementaciones, recuerda ir paso por paso.
+
+## Skills instaladas
+- Viven en `.agents/skills/` y quedan fijadas (hash) en `skills-lock.json`. Fuente: `supabase/agent-skills` (GitHub). Reinstalar/actualizar con `npx skills add supabase/agent-skills`.
+- `supabase`: cargar antes de cualquier tarea de Supabase (Database, Auth, Edge Functions, Realtime, Storage, RLS, `@supabase/ssr`, CLI, MCP, debugging de errores/permisos). Supabase cambia seguido: revisar `https://supabase.com/changelog.md` y docs actuales antes de implementar, no confiar en memoria del modelo.
+- `supabase-postgres-best-practices`: cargar antes de escribir o cambiar cualquier cosa en Postgres (tablas, columnas, tipos, migraciones, RLS y sus tests, índices, triggers, funciones, pg_cron, pgmq, pgvector, `pg_restore`) y al diagnosticar queries lentas, timeouts, locks, conexiones o filas visibles para el usuario incorrecto.
+
+## Supabase
+- Estado actual: **nada implementado**. No hay dependencias `@supabase/*` en `package.json`, ni carpeta `supabase/`, ni `config.toml`. El schema objetivo está en el reference `DB-Schema` (`../07-DB-Schema/opendaycare-database-schema.md`); crearlo vía migraciones versionadas (CLI o MCP), nunca a mano en el dashboard sin migración.
+- Env: `.env.template` solo declara `SUPABASE_DB_PASSWORD`. Los `.env*` están gitignoreados. Claves publishable en el cliente; `service_role`/secret key solo server-side (en Next.js todo `NEXT_PUBLIC_*` termina en el browser).
+- Seguridad obligatoria: RLS activo en toda tabla de schema expuesto (`public`), policies con `TO authenticated` + predicado de dueño (`(select auth.uid()) = user_id`), nunca `user_metadata` para autorización (usar `app_metadata`), `SECURITY DEFINER` solo si es imprescindible y fuera de schema expuesto.
+- Cliente: cuando se integre, usar `@supabase/ssr` para App Router (cookies server-side), con versiones pinneadas y lockfile commiteado.
 
 ## Reglas de código
 - Usar código limpio, nombres, funciones, variables, etc. en inglés.
